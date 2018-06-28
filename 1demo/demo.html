@@ -1,0 +1,20 @@
+var $ = {
+	get:function(url,callback) {
+		//1. 创建xhr
+		var xhr = new XMLHttprequest();
+		//2. 设置请求的参数
+		xhr.open('get',url,true);
+		//3. 发送
+		xhr.send();
+		//4. 接收完数据
+		xhr.onreadystatechange = function(){
+			if(xhr.readyState === 4 && xhr.status === 200) {
+				callback(xhr.responseText);
+			};
+		};
+	};
+};
+
+$.get('../package.json',function(data){
+	console.log(data);
+})

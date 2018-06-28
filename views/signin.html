@@ -40,6 +40,30 @@
     <script src="/node_modules/jquery/dist/jquery.js"></script>
     <script>
         // 处理表单提交
+        $('#signin_form').on('submit',function(e){
+            e.preventDefault();
+
+            // 表单数据序列化
+            var formdata = $('#signin_form').serialize()
+            console.log(formdata)
+
+            $.ajax({
+                url:'/signin',
+                type:'post',
+                data:formdata,
+                dataType:'text',
+                success:function(){
+                    alert("登陆成功！")
+                    location.href = '/'
+                },
+                // error:function(error){
+                //     if(error) {
+                //         throw error
+                //     }
+                // }
+
+            })
+        })
     </script>
 </body>
 
